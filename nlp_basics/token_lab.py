@@ -13,3 +13,10 @@ def tokens(text: str) -> list[str]:
 
 def unique_terms(text: str) -> list[str]:
     return sorted(set(tokens(text)))
+
+
+def ngrams(text: str, n: int = 2) -> list[tuple[str, ...]]:
+    parts = tokens(text)
+    if n <= 0:
+        raise ValueError("n must be positive")
+    return [tuple(parts[i : i + n]) for i in range(0, max(0, len(parts) - n + 1))]

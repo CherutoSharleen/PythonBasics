@@ -1,6 +1,6 @@
 import unittest
 
-from token_lab import ngrams, tokens, unique_terms
+from token_lab import ngrams, term_frequency, tokens, unique_terms
 
 
 class TokenLabTests(unittest.TestCase):
@@ -12,6 +12,10 @@ class TokenLabTests(unittest.TestCase):
 
     def test_bigrams(self) -> None:
         self.assertEqual(ngrams("python ranking model", 2), [("python", "ranking"), ("ranking", "model")])
+
+    def test_term_frequency(self) -> None:
+        freq = term_frequency("ranking ranking search")
+        self.assertEqual(freq["ranking"], 2)
 
 
 if __name__ == "__main__":

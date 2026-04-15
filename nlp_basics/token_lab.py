@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from collections import Counter
 
 
 def normalize(text: str) -> str:
@@ -20,3 +21,7 @@ def ngrams(text: str, n: int = 2) -> list[tuple[str, ...]]:
     if n <= 0:
         raise ValueError("n must be positive")
     return [tuple(parts[i : i + n]) for i in range(0, max(0, len(parts) - n + 1))]
+
+
+def term_frequency(text: str) -> dict[str, int]:
+    return dict(Counter(tokens(text)))

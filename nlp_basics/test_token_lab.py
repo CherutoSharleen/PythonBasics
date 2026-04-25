@@ -1,6 +1,6 @@
 import unittest
 
-from token_lab import ngrams, term_frequency, tokens, unique_terms
+from token_lab import ngrams, split_sentences, term_frequency, tokens, unique_terms
 
 
 class TokenLabTests(unittest.TestCase):
@@ -16,6 +16,10 @@ class TokenLabTests(unittest.TestCase):
     def test_term_frequency(self) -> None:
         freq = term_frequency("ranking ranking search")
         self.assertEqual(freq["ranking"], 2)
+
+    def test_split_sentences(self) -> None:
+        parts = split_sentences("Rank documents. Explain scores! Keep examples short?")
+        self.assertEqual(len(parts), 3)
 
 
 if __name__ == "__main__":

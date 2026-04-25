@@ -25,3 +25,8 @@ def ngrams(text: str, n: int = 2) -> list[tuple[str, ...]]:
 
 def term_frequency(text: str) -> dict[str, int]:
     return dict(Counter(tokens(text)))
+
+
+def split_sentences(text: str) -> list[str]:
+    raw = re.split(r"(?<=[.!?])\s+", text.strip())
+    return [part.strip() for part in raw if part.strip()]

@@ -30,3 +30,11 @@ def term_frequency(text: str) -> dict[str, int]:
 def split_sentences(text: str) -> list[str]:
     raw = re.split(r"(?<=[.!?])\s+", text.strip())
     return [part.strip() for part in raw if part.strip()]
+
+
+def keyword_positions(text: str, keyword: str) -> list[int]:
+    toks = tokens(text)
+    needle = keyword.strip().lower()
+    if not needle:
+        return []
+    return [idx for idx, tok in enumerate(toks) if tok == needle]

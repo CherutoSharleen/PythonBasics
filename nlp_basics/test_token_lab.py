@@ -1,6 +1,6 @@
 import unittest
 
-from token_lab import keyword_positions, ngrams, split_sentences, term_frequency, tokens, unique_terms
+from token_lab import contains_all_terms, keyword_positions, ngrams, split_sentences, term_frequency, tokens, unique_terms
 
 
 class TokenLabTests(unittest.TestCase):
@@ -24,6 +24,10 @@ class TokenLabTests(unittest.TestCase):
     def test_keyword_positions(self) -> None:
         positions = keyword_positions("search rank search explain", "search")
         self.assertEqual(positions, [0, 2])
+
+    def test_contains_all_terms(self) -> None:
+        self.assertTrue(contains_all_terms("search ranking pipeline", ["search", "ranking"]))
+        self.assertFalse(contains_all_terms("search ranking pipeline", ["search", "python"]))
 
 
 if __name__ == "__main__":

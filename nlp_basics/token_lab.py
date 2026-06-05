@@ -38,3 +38,11 @@ def keyword_positions(text: str, keyword: str) -> list[int]:
     if not needle:
         return []
     return [idx for idx, tok in enumerate(toks) if tok == needle]
+
+
+def contains_all_terms(text: str, required_terms: list[str]) -> bool:
+    text_terms = set(tokens(text))
+    wanted = {term.strip().lower() for term in required_terms if term.strip()}
+    if not wanted:
+        return False
+    return wanted.issubset(text_terms)

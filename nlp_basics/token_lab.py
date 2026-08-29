@@ -46,3 +46,7 @@ def contains_all_terms(text: str, required_terms: list[str]) -> bool:
     if not wanted:
         return False
     return wanted.issubset(text_terms)
+
+
+def token_count(text: str) -> int:
+    return len(tokens(text))
